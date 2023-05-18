@@ -4,11 +4,9 @@ import dto.PaymentRequestDTO;
 import dto.StatusDTO;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class TransactionService {
-    public void processPaymentRequest(PaymentRequestDTO paymentRequest) {
+    public StatusDTO processPaymentRequest(PaymentRequestDTO paymentRequest) {
         String cardNumber = paymentRequest.getCardNumber();
         String establishment = paymentRequest.getEstablishment();
         String description = paymentRequest.getDescription();
@@ -23,6 +21,7 @@ public class TransactionService {
         }
 
 
+        return null;
     }
 
 }
