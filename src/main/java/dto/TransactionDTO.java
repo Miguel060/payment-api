@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class TransactionDTO {
     private Long id;
 
-    private StatusDTO status;
+    private String status;
 
     @JsonProperty ("cartao")
     private String cardNumber;

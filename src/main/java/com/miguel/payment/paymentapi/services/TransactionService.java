@@ -2,9 +2,14 @@ package com.miguel.payment.paymentapi.services;
 
 import dto.PaymentRequestDTO;
 import dto.StatusDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@NoArgsConstructor
+@Data
 public class TransactionService {
     public StatusDTO processPaymentRequest(PaymentRequestDTO paymentRequest) {
         String cardNumber = paymentRequest.getCardNumber();
@@ -13,15 +18,13 @@ public class TransactionService {
         String formOfPayment = paymentRequest.getFormOfPayment();
         Integer installments = paymentRequest.getInstallments();
         Double value = paymentRequest.getValue();
-
-        if (cardNumber.length() < 16) {
-            StatusDTO status = new StatusDTO("NEGADO");
+String statusValue;
+        if (cardNumber != null && cardNumber.length() !=16) {
+            statusValue = "NEGADO";
         } else {
-            StatusDTO status = new StatusDTO("AUTORIZADO");
+            statusValue = "AUTORIZADO";
         }
-
-
-        return null;
+        return new StatusDTO(statusValue, null);
     }
 
 }
